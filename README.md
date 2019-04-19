@@ -10,3 +10,7 @@ Else, to get the Python 3.7 pip libs, install Python 3.7 then run pip install -r
 
 # Testing
 From the root directory, run nosetests, or python3 unittest -m <filename>
+
+# Data
+This model is trained on the UTKFace data 'Aligned&Cropped Faces' dataset.
+https://susanqq.github.io/UTKFace/
