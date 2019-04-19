@@ -9,7 +9,7 @@ If using anaconda, use the condaEnvironment.txt file by running : conda create -
 Else, to get the Python 3.7 pip libs, install Python 3.7 then run pip install -r requirements.txt
 
 # Testing
-From the root directory, run nosetests, or python3 unittest -m <filename>
+From the root directory, run nosetests, or python -m unittest discover -s test/ -p '*_test.py'
 
 # Data
 This model is trained on the UTKFace data 'Aligned&Cropped Faces' dataset.
