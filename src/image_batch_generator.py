@@ -9,8 +9,10 @@ class ImageBatchGenerator():
 
     def generate(self):
         path = '/Users/daniel.a.bergeland/Documents/ai/demographic_cam/test/test_images'
-        files = [f for f in listdir(path) if isfile(join(path, f))]
-        image = random.choice(files)
-        
-        with open(join(path, image), 'rb') as image:
-            yield misc.imread(image), 1
+        files = [filename for filename in listdir(path) if isfile(join(path, filename))]
+    
+        while True:
+            image = files[0]
+            
+            with open(join(path, image), 'rb') as image:
+                yield misc.imread(image), 1
