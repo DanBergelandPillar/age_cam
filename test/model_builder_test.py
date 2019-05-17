@@ -15,6 +15,14 @@ class TestModelBuilder(unittest.TestCase):
         output_layer_shape = self.inception_model.layers[-1].output_shape
         self.assertEqual(output_layer_shape, (None, 1))
 
+    def test_baseLayersAreNotTrainable(self):
+        trainable_layers = 3
+        head_cutoff = -1*trainable_layers
+        for layer in self.inception_model.layers[:head_cutoff]:
+            self.assertFalse(layer.trainable)
+        for layer in self.inception_model.layers[head_cutoff:]:
+            self.assertTrue(layer.trainable)
+
     def test_modelHasOptimizer(self):
         self.assertEqual(type(self.inception_model.optimizer), type(Adadelta()))
 

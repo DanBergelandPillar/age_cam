@@ -14,7 +14,9 @@ def InceptionAge():
     # and a logistic layer
     predictions = Dense(1, activation='softmax')(x)
 
-    # this is the model we will train
+    for layer in base_model.layers:
+        layer.trainable = False
+
     model = Model(inputs=base_model.input, outputs=predictions)
 
     model.compile(loss= mean_squared_error,
