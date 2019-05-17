@@ -3,7 +3,7 @@ from tensorflow.keras.layers import Dense, GlobalAveragePooling2D
 from tensorflow.keras import Model
 
 def InceptionAge():
-    base_model = ResNet50(weights='imagenet', include_top=False, input_shape=(224,224,3))
+    base_model = ResNet50(weights='imagenet', include_top=False, input_shape=(200,200,3))
     # add a global spatial average pooling layer
     x = base_model.output
     x = GlobalAveragePooling2D()(x)
