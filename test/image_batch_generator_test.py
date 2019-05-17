@@ -23,7 +23,10 @@ class TestDataGenerator(unittest.TestCase):
         input, label = next(self.data_gen.generate())
         self.assertEqual(label, 31)
 
-
+    def test_createDataFrame_returnsFilenamesAndLabels(self):
+        dataFrame = self.data_gen.createDataFrame()
+        for index, row in dataFrame.iterrows():
+            self.assertTrue(row['labels']==int(row['filepaths'].split('_')[0]))
 
 if '__name__' == '__main__':
     unittest.main()
