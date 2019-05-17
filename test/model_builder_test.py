@@ -1,4 +1,6 @@
 from src.model_builder import InceptionAge
+from tensorflow.keras.optimizers import Adadelta
+from tensorflow.keras.losses import mean_squared_error
 import unittest
 
 class TestModelBuilder(unittest.TestCase):
@@ -12,6 +14,13 @@ class TestModelBuilder(unittest.TestCase):
     def test_outputLayerShouldHaveDimensionNonex1(self):
         output_layer_shape = self.inception_model.layers[-1].output_shape
         self.assertEqual(output_layer_shape, (None, 1))
+
+    def test_modelHasOptimizer(self):
+        self.assertEqual(type(self.inception_model.optimizer), type(Adadelta()))
+
+    def test_modelUsesMeanSquareError(self):
+        self.assertEqual(self.inception_model.loss, mean_squared_error)
+
 
 if '__name__' == '__main__':
     unittest.main()
