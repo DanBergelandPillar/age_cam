@@ -18,8 +18,9 @@ class TestModelBuilder(unittest.TestCase):
     def test_baseLayersAreNotTrainable(self):
         trainable_layers = 3
         head_cutoff = -1*trainable_layers
-        for layer in self.resnet_model.layers[:head_cutoff]:
-            self.assertFalse(layer.trainable)
+        map(lambda layer: self.assertFalse(layer.trainable), self.resnet_model.layers[:head_cutoff])
+        # for layer in self.resnet_model.layers[:head_cutoff]:
+        #     self.assertFalse(layer.trainable)
         for layer in self.resnet_model.layers[head_cutoff:]:
             self.assertTrue(layer.trainable)
 

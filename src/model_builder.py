@@ -20,8 +20,3 @@ def Resnet50Age():
             optimizer= Adam())
 
     return model
-
-def Custom1():
-    model = Sequential([
-
-    ])
