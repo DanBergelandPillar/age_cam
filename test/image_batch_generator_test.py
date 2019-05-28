@@ -7,16 +7,16 @@ class TestDataGenerator(unittest.TestCase):
         self.target_path = 'test/test_images'
         self.random_choice = 0
         choicer = lambda filelist: filelist[self.random_choice]
-        self.data_gen = ImageBatchGenerator(self.target_path, choicer)
+        self.batch_size = 10
+        self.data_gen = ImageBatchGenerator(self.target_path, choicer, batch_size)
 
     def test_getsImageDirectory(self):
         self.assertEqual(self.data_gen.image_dir, self.target_path)
 
     def test_callingYieldReturnsPictureDataAndAgeLabel(self):
         input, label = next(self.data_gen.generate())
-        self.assertEqual(np.shape(input), (200, 200, 3))
+        self.assertEqual(np.shape(input), (1, self.batch_size, 200, 200, 3))
         self.assertEqual(label, 1)
-
 
     def test_callingYieldAndGettingSecondImageHasLabelOf31(self):
         self.random_choice = 2
