@@ -19,10 +19,7 @@ class TestModelBuilder(unittest.TestCase):
         trainable_layers = 3
         head_cutoff = -1*trainable_layers
         map(lambda layer: self.assertFalse(layer.trainable), self.resnet_model.layers[:head_cutoff])
-        # for layer in self.resnet_model.layers[:head_cutoff]:
-        #     self.assertFalse(layer.trainable)
-        for layer in self.resnet_model.layers[head_cutoff:]:
-            self.assertTrue(layer.trainable)
+        map(lambda layer: self.assertTrue(layer.trainable), self.resnet_model.layers[head_cutoff:])
 
     def test_modelHasOptimizer(self):
         self.assertEqual(type(self.resnet_model.optimizer), type(Adam()))

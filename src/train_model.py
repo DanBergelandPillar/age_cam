@@ -14,7 +14,8 @@ def predict_on_samples(generator):
     labels = next_batch[1][0]
     print(labels)
     for i in range(len(predictions)):
-        print('\n', 'Predicted: ', predictions[i]*100)
+        print('...   ')
+        print('Predicted: ', predictions[i]*100)
         print('Actual: ', labels[i]*100)
 
 ## Get data generator
